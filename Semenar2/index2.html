@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Информация о студенте</title>
+</head>
+<body>
+    <h1>Информация о студенте</h1>
+    <form id="studentForm">
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="age">Возраст:</label>
+        <input type="number" id="age" name="age"><br><br>
+
+        <label for="grade">Класс:</label>
+        <input type="text" id="grade" name="grade"><br><br>
+
+        <button type="button" onclick="displayStudentInfo()">Вывести информацию</button>
+    </form>
+
+    <div id="studentInfo"></div>
+
+    <script>
+        class Student {
+            constructor(name, age, grade) {
+                this.name = name;
+                this.age = age;
+                this.grade = grade;
+            }
+
+            displayInfo() {
+                return `Name: ${this.name}<br>Age: ${this.age}<br>Grade: ${this.grade}`;
+            }
+        }
+
+        function displayStudentInfo() {
+            const name = document.getElementById('name').value;
+            const age = parseInt(document.getElementById('age').value);
+            const grade = document.getElementById('grade').value;
+
+            const student = new Student(name, age, grade);
+            const studentInfoElement = document.getElementById('studentInfo');
+            studentInfoElement.innerHTML = student.displayInfo();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Информация о книге</title>
+</head>
+<body>
+    <h1>Информация о книге</h1>
+    <form id="bookForm">
+        <label for="title">Название:</label>
+        <input type="text" id="title" name="title"><br><br>
+
+        <label for="author">Автор:</label>
+        <input type="text" id="author" name="author"><br><br>
+
+        <label for="pages">Кол-во страниц:</label>
+        <input type="number" id="pages" name="pages"><br><br>
+
+        <button type="button" onclick="displayBookInfo()">Вывести данные о книге</button>
+    </form>
+
+    <div id="bookInfo"></div>
+
+    <script>
+        class Book {
+            constructor(title, author, pages) {
+                this.title = title;
+                this.author = author;
+                this.pages = pages;
+            }
+
+            displayInfo() {
+                return `Title: ${this.title}<br>Author: ${this.author}<br>Pages: ${this.pages}`;
+            }
+        }
+
+        function displayBookInfo() {
+            const title = document.getElementById('title').value;
+            const author = document.getElementById('author').value;
+            const pages = parseInt(document.getElementById('pages').value);
+
+            const book = new Book(title, author, pages);
+            const bookInfoElement = document.getElementById('bookInfo');
+            bookInfoElement.innerHTML = book.displayInfo();
+        }
+    </script>
+</body>
+</html>
